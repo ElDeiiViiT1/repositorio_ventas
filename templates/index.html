@@ -3,9 +3,136 @@
 <head>
   <meta charset="UTF-8">
   <title>Informe de Predicación</title>
+  <style>
+   body {
+  font-family: 'Segoe UI', sans-serif;
+  background-image: url('https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?cs=srgb&dl=pexels-souvenirpixels-417074.jpg&fm=jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+h1 {
+  background: rgba(34, 49, 63, 0.7); /* oscuro translúcido */
+  color: #ffffff;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  margin-top: 2rem;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  font-size: 2rem;
+  letter-spacing: 1px;
+}
+
+form {
+  background: rgba(255, 255, 255, 0.93);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  max-width: 420px;
+  width: 90%;
+  box-sizing: border-box;
+  margin: 2rem 0;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+  width: 100%;
+  padding: 0.7rem;
+  margin-bottom: 1.2rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border: 2px solid #4CAF50;
+  box-shadow: 0 0 10px rgba(76, 175, 80, 0.4);
+  background-color: #f0fff4;
+  transition: all 0.2s ease;
+}
+
+input[type="checkbox"] {
+  margin-right: 0.5rem;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button {
+  width: 100%;
+  padding: 1.2rem;
+  background: linear-gradient(135deg, #43a047, #2e7d32);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.1s ease;
+}
+
+button:hover {
+  background: linear-gradient(135deg, #388e3c, #1b5e20);
+  transform: scale(1.02);
+}
+
+.footer-text {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  text-shadow: 1px 1px 3px black;
+}
+
+#mensaje {
+  background-color: #e6f4ea;
+  color: #2e7d32;
+  border: 1px solid #a5d6a7;
+  padding: 1rem;
+  border-radius: 10px;
+  font-weight: 600;
+  text-align: center;
+  animation: fadeIn 0.3s ease-in-out;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+    
+
+    
+  </style>
+
 </head>
+
 <body>
-  <h1>INFORME DE PREDICACIÓN</h1>
+  <h1>INFORME DE PREDICACIÓN (Ventas)</h1>
+  
   <form id="informeForm">
     <label><strong>Nombre:</strong></label>
     <input type="text" id="nombre" required><br><br>
@@ -24,9 +151,31 @@
     <label><strong>Comentarios:</strong></label><br>
     <textarea id="comentarios" rows="4" cols="40"></textarea><br><br>
 
+    <div id="mensaje" style="display:none; margin-bottom: 1rem;"></div>
+
     <button type="submit">Enviar informe</button>
   </form>
 
+  
+
+
   <script src="/static/script.js"></script>
+
+  <script>
+    document.getElementById('informeForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+  
+      const mensaje = document.getElementById('mensaje');
+      mensaje.innerText = "Muchas gracias por enviar el informe.";
+      mensaje.style.display = "block";
+  
+      this.reset();
+  
+      // Opcional: Ocultar mensaje automáticamente después de 5 segundos
+      setTimeout(() => {
+        mensaje.style.display = "none";
+      }, 5000);
+    });
+  </script>
 </body>
 </html>
