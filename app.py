@@ -39,7 +39,7 @@ def enviar():
         pdf_bytes = bytes(pdf.output(dest='S').encode('latin-1'))
 
         msg = Message(subject=f"Informe de Predicación - {data['nombre']} ({data['mes']})",
-                      recipients=["david.carrera2001@gmail.com"])
+                      recipients=["pvilchesmolina@gmail.com"])
         msg.body = "Se adjunta el informe de predicación."
         msg.attach("Informe.pdf", "application/pdf", pdf_bytes)
 
